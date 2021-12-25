@@ -1,0 +1,121 @@
+/* CSS */
+/* CSS allows the user to change elements within a HTML tag AKA Type Selectors */
+/*Selector { property : value ; }*/
+
+/* ID can only be  applied once per page and class can be used many times
+to use them with a type selector, use the # symbol with the id and a .period  for a class*/
+#ID {font-family: Arial, Helvetica, sans-serif; color :red;}
+.Class {font-size:200%; font-family:"Brush Script MT", cursive;}
+/* Using the descendant selectors, you can target only elements in a tag nested within another tag*/
+.Class em {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+/*You can change the width of an element as well as a border for images and other elements*/
+.no {
+  --colorGray: gray;
+  background: var(--colorGray, black);
+  
+  /*border-radius can change the sharpness of the borders edges*/
+
+  /*box-shadow will create a shadow around your box when
+  box-shadow: offset-x , offset-y, blur radius, spread radius, color*/
+  box-shadow: -0px -2px 5px 1px rgba(0, 0, 0, 0.19), -6px -5px 6px rgba(0,0,0,0.23);
+}
+/*HTML elements are controlled by padding, border, margin
+Each element has padding (space around the element), margin (space between border and elements), and border padding: top right bottom left*/
+
+[type ="email"] {
+  margin-top: 10px; margin-bottom: 20px;
+}
+
+/*Absolute units measure with physical units of from the actual plane they are (i.e bottom: 10px will be 10px above from the actual bottom of the screen) while relative is relative to the position  of other elements (i.e bottom: 10px will be 10px below the element above it) Em is based on an elements font. Font-size is relative to the parent element
+CSS reads from top to bottom so the latter change will override the former declaration
+
+Using the !important on a value in CSS will override all other attributes no matter the placement
+*/
+:root {
+  /*Allows variables to be created and used globally*/
+  --rootVAR: Arial;
+}
+.STARTS {
+  font-family:var(--rootVAR ,sans-serif);
+  font-size: medium;
+  /*text-align will align the text*/
+  text-align: justify;
+}
+/*font-weight is the property that controls the boldness and thickness of text using keywords or numbers from 100 to 900*/
+.basic {
+  font-weight: lighter;
+  text-align: center; 
+}
+.STARTS em {
+  /*vertical align aligns the text vertically*/
+  vertical-align: sub;
+}
+ /*:hover will change the attribute of a anchor element when it has the mouse over.
+  Pseudo-classes can be added to selectors to select a specific state of the element*/
+.GL {
+  color:black
+}
+.GL:hover {
+ color: blue;
+}
+#video {
+  /*float position will move the element to the left or right of its parent
+  fixed position will not move the elemetnt even when scrolling*/
+  float:right;
+}
+/* When elements overlap, they change the order of which they are by using the z-index property using whole interger numbers
+Using gradient and colors to make a backround with faded colors*/
+.basic {
+  border-radius: 10px;
+  background: linear-gradient(45deg, #CCFFFF, #FFCCCC);
+  margin: 50 px auto;
+}
+/* Making a repeating gradient to make colors fading*/
+.STARTS {
+  border-radius: 20px;
+  margin: 50px auto;
+  background: repeating-linear-gradient(
+    60deg,
+  )
+}
+/*setting the background for the whole page*/
+body {
+  background: url(https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png);
+}
+/*Using transform with pseudo class hover to change the size when hovering the mouse above it and setting the animation name and duration when hovering the mouse over it */
+.circle:hover {
+  animation-name: after;
+  animation-duration: 100ms;
+  /*animation-fill-mode to maintain that state after the duration*/
+  animation-fill-mode: forwards;
+}
+/*@keyframes to set the properties of the animation from start to finish*/
+@keyframes after {
+  100% {
+    transform: scale(1.1);
+  }
+}
+/*Using the :after psuedo class on all paragraphs to write "~peko" after it*/
+p:after {
+  content: "~peko."
+}
+/*Flexboxes are containers for content that can change the orentation, order, and size of fairly easily.align-items and justify-content use the cross-axis(vertical) and the main-axis (horizontal) to move the content.*/
+/*Using the display: property on the unordered list to make it look different*/
+#user {
+  display: flex;
+  align-items: flex-end;
+}
+/* More usage of flexboxes*/
+.no {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+/*new notes*/
+/*when using different rules, the id of a element will always take precedence over using class to change it (unless it is used with !important)
+
+#id selectors are worth 100
+.class selectors are worth 10
+tag selectors are worth 1
+*/

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--One can create multiple classes to an element by using a space inbetween them-->
+<html>
+  <!--Javascript-->
+  <script>
+    //place holder for preventDefault() By default, elements and data cannot be dragged in other elements, this prevents the default handling the event
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    //When dragged, ondragstart calls function drag(event), which specifies what data should be dragged
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+     }
+     // Drop function prevents the web default, dragged data can be accessed with dataTransfer.getData() and retun any data that was set to the same type in the setData() method
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+    }
+    // Dragged element is appended to the drop element
+    ev.target.appendChild(document.getElementById(data));
+  </script>
+  <head>
+    <!--Linking index.css via link tag using relative path -->
+    <link rel="stylesheet" href="index.css">
+    <!--Meta defines info of the file -->
+    <!--Attributes give information to the tags-->
+    <meta charset="UTF-8" />
+    <!--Description of the web page -->
+    <meta name="Description" content="Website">
+    <!--Metadata for the author-->
+    <meta name="author" content="Me">
+    <!--Metadata for the view for device-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="">Doc</title>
+  </head>
+  <body style="background-color: rgb(255, 255, 255);">
+    <div id="box" ondrop="drop(event)" ondragover="allowDrop(event)" style ="border:1px solid black; width:200px; height:200px"></div>
+    <img id="image" src="https://skipway.com/wp-content/uploads/2020/05/image-20150902-6700-t2axrz.jpg" draggable="true" ondragstart="drag(event)" width= "150" alt="" >
+    <header>
+      <h1>Hello World!</h1>
+    </header>
+    <!--Horizontal line-->
+    <hr/>
+    <article>
+      <section>  
+        <div class="Paragraph">
+          <p style="color:rebeccapurple; "><i>This is a very simple web page</i></p>
+        </div>
+        <!--Hyperlink to google on a new tab You can turn elements into a link-->
+        <a class="GL" href="https://www.google.com" target="_blank">Google</a>
+        <!--inputing image and resizing them-->
+        <img class="no" draggable="true" width = "150" src="https://skipway.com/wp-content/uploads/2020/05/image-20150902-6700-t2axrz.jpg">
+        <!--Video tag with source, thumbnail, control and autoplay with loop-->
+        <video src="" poster="" loop autoplay controls></video>
+        <!--Embeded video from youtube-->
+        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/pQN-pnXPaVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- To put an internal link, use the # symbol-->
+      </section>
+      <section>
+        <!--Making an unoredered list-->
+        <p>Test text to test CSS transitions</p>
+        <ul class="UList">
+          <li>There is one</li>
+          <li>There is two</li>
+          <li>Another three</li>
+          <li>Another four</li>
+          <li>Last five</li>
+        </ul>
+        <!--Making a table with two rows with one column each-->
+        <table>
+          <thead>
+        <!--Caption tag is the title of the table-->
+        <caption><h2>Random list of numbers</h2></caption>
+            <tr>
+              <th>one</td>
+              <th>two</td>
+              <td>three</td>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td colspan="1">two</td>
+            <td>three</td>
+            <td>one</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+    <textarea rows="5" cols="10">
+      Hello
+    </textarea>
+    <!--HTML5F Forms and types of input-->
+    <form>
+      <!--Simple imput type for username and label-->
+      <label>Your name:</label>
+      <input id ="user" name="username" type="text">
+    </form>
+    <form>
+      <!--Input type with for email with placeholder, autofocus, and enter button-->
+      <label for="email">Your email address:"</label>
+      <input type ="text" name="email" placeholder="email@example.com">
+      <input type="submit" value="Enter">
+    </form>
+    <!--Form with autocomplete off with input type for email, submit button and having the required attribute.Auto complete brings up previous values the user has entered before. Required attribute will not submit if there is no value entered. -->
+    <form autocomplete="off">
+      <label for="e-mail"> Your e-mail address:</label>
+      <input name="Email" type="email" required>
+      <input type="submit" value="Submit">
+    </form>
+    <!--Search box with the mysearch attribute-->
+    <form>
+      <label for="mysearch">Search Box</label>
+    <input id="mysearch" name="searchitem" type="search">
+    <input id="car" type="text" list="colors">
+    <!--ID must be the same of the list value of search of input-->
+      <datalist id="colors">
+        <option value="Red">
+        <option value="Green">
+        <option value="Yellow">
+      </datalist>
+      <br>
+      <input id="email" name="email" type="email" placeholder="example@example.com" />
+      <br />
+      <input id="url" name="url" type="url" placeholder="example.com" />
+      <br />
+      <input id="tel" name="tel" type="tel" placeholder="555.555.1211" />
+    </form>
+    <br/>
+    <input type="date">
+    <!--Radio and checkbox buttons will need a value attribute to return when a box is selected. CHecked attribute makes the button checked by default-->
+    <input name ="btn" type="radio">
+    <input name ="btn" type="radio">
+    <input type="email">
+    <input type="color">
+  
+    <!--Iframes take the website that is inputted by the src attribute and embeds the website into your own website. "Taking a peek into the website"
+    <iframe src ="https://www.zenflowchart.com/docs/edit/15wNJAPdR6qwLdGyOXpZ" width ="1000" height="500" frameborder="0" scrolling="">Iframe is not available please check your setting or browser</iframe>-->
+
+    <svg class="circle" width ="150" height="120">
+      <circle cx="50%" cy="65" r="50" fill="green" stroke="black"/>
+    </svg>
+    <svg width ="500" height="200">
+      <rect x = "15%" y = "10" width="110" height="110" fill="red">
+        <animate attributeName="x" from ="0" to="300" dur ="3s" fill ="freeze" repeatCount="2"></animate>
+        </rect>
+        <path d="M 0 0 L200 200 L200 0 Z" style="stroke:#000;  fill:none;" />
+    </svg>
+    <canvas id="canvas1" width="500" height="200"></canvas>
+    <script>
+      var c = document.getElementById("canvas1");
+      var ctx = c.getContext("2d");
+      //fillStyle is to set the visible properties of the object in the objects
+      ctx.fillStyle ="rgba(0,200,0, 1)";
+      //          Coords   Size
+      //           |   |   |  |
+      ctx.fillRect(20,20,100,100);
+      // Lines to right text in canvas1
+      ctx.font="bold 22px Tahoma";
+      ctx.textAlign="start";
+      ctx.fillText("start",165,15);
+      // Moving the canvas with the translate method
+      ctx.translate(100, 5);
+      ctx.fillText("after translate",170,30);
+    </script> 
+    <div id="ID">
+      <p>This paragraph has an id equal to ID</p>
+      <p>This one is the same</p>
+    </div>
+    <div class="Class">
+      <p>This paragraph, however, has a class equal to "class"</p>
+      <p>This paragraph also has to same class value</p>
+      <p>The em tag --> <em>will be the only one changed</em></p>
+    </div>
+    <p class="basic">Stocks are essentially the whole business of buying a tiny part of a company in hopes that it will grow, the percentage that you bought of that company stays the same and so it will increase. The stock market is constantly peaking and volleying out overall is going upwards. Now as you can imagine it can be unwise to invest in a single new company as the likelihood of it becoming huge enough to make a decent profit is slim to none. What is a much better idea are index funds. Where you put a tiny bit of money across MANY companies that are usually selected for you or select from pre made packs of different stocks that you’ll be small amounts of money in. Then the goal is keep the money in all those companies balanced. That only means checking on it once and a while. 
+      I bet there is some stuff I missed, but hopefully this helped.</p>
+    </br>
+    <p class="STARTS">Personally i would wait until like summer of 2021, and do research on stocks and bonds and how they are valued, for the 9 months or so prior. Like look at what caused past recessions like the dotcom bubble, the housing crisis, or the great depression. One really good informative movie is “the big short”. I felt like that explained the housing crash very well. Also looking into what indicators signal recessions like, the bond yield curve inversion, or the unemployment rate. Faang stocks, and etfs are probably the best bet rn, if you don’t understand the market too well. you can invest in other things once you have been watching the market for awhile and understand it better. Rn is a weird time to start investing though and be wary of another market crash until probably summer 2021. I wouldn’t be surprised if there is another significant crash before that time. Definitely don’t do options though until you have at least a couple years normal investing. A lot of people get screwed in options. H<sub>2</sub>0
+
+      That’s my 2 cents, but you can always develop your own strategy. I could go one for an hour, but I started about 6 months ago, and I’ve been looking at the market for a couple hours every day. Rn i have like 1/3rd of my portfolio in walmart and kroger. 1/3rd in Microsoft and google. Then the rest in cash. I’m thinking about putting money into silver as well since, there has been so much stimulus recently, and probably will be more. I’m only investing about $10,000 and so I’m not too into diversifying rn, but ik that is definitely a common strategy to use. I’ll definitely diversify though once i have more money in my account. So far those are the basics of what i’ve done to better understand stocks. It can take a bit of time to learn everything, but most terms can be learned by googling them, and once you understand how to invest it can be a great tool to increase your savings. It just takes a little time.
+      
+      Some good videos are ray dalio’s “the economic machine”, and I’m sure you can find many more good videos on youtube</p>
+    <!------------APIS--------------------->
+
+    <!--       USER STORAGE 
+      localStorage.setItem("Key","value");
+    alert(localStorage.getItem("key"));
+    sessionStorage.removeItem("key");
+    localStorage.clear();
+  
+    --        GEOLOCATION
+    naviagtor.geolocation.getCurrentPosition();
+    showLocation: retrieves location information (mandatory parameter)
+    (OPTIONAL PARAMETERS)
+    ErrorHandler: Invoked when an error occurs
+    Options: Set of options for retrieving the location information
+
+    Geodetic and Civic Representation (Relative and Absoulute)
+    getCurrentPosition() returns an object if successful
+    Laititude longitude and accuracy properties are returned
+
+    --Drag and Drop
+      <img draggable ="true" />
+     Any element can be draggable
+    -->
+  </body>
+</html>
+<!--div and spans stores HTML which you can apply CSS to as well as other stuff
+Block elements take a chunk of the page, while inline elements only take the space they need : Span = Inline , Div = block. Form tags wrap user input elements. You should not use the same id for different elements. They should be unique. An element can have multiple classes, it can be in the same string but should be seperated by a space
+
+    vw (viewport width): 10vw would be 10% of the viewport's width.
+    vh (viewport height): 3vh would be 3% of the viewport's height.
+    vmin (viewport minimum): 70vmin would be 70% of the viewport's smaller dimension (height or width).
+    vmax (viewport maximum): 100vmax would be 100% of the viewport's bigger dimension (height or width).-->
