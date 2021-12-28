@@ -1,3 +1,7 @@
+/*What Javascipt is:
+  a programing language made for websites that enable dynamic updates and make the site interactive. Javascript can do various things: timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. It also implements Application Programming Interfaces (API's). It can be run natively in the browser.
+  
+  */
 // different data types include : undefined, null, boolean, string, symbol, bigint, number, object. 
 
 // variables are containers for data that can be use dynamically
