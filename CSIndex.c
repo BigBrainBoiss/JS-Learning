@@ -4,7 +4,7 @@
 
 /*Scope is the level at which code can be manipulated. Scope is defined through blocks({}). Global scope means it can be accessed from anywhere in the program. Local is somehting that can be seen or manipulated only within the block it was declared */
 
-#include <stdio.h> //Preprocessor directive: instructs the complier to modify the code. #include is retrieving C code from stdio.h. Files used this way end with the .h extension and are called header files. printf is the code being used from stdio.h (standard input/output)
+#include <stdio.h> /*Preprocessor directive: instructs the complier to modify the code. #include is retrieving C code from stdio.h. Files used this way end with the .h extension and are called header files. printf is the code being used from stdio.h (standard input/output)*/
 
 //Functions can exist outside of main fucntion
 //Functions need to have a return type to notify C what type of data can be returned 
