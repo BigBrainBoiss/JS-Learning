@@ -71,7 +71,7 @@ int main(void) //Main is a function, where all are executable code will be store
 		char
 		int
 		short
-		long
+		long 
 		long long
 	Real numbers:
 		float
