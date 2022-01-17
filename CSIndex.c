@@ -153,11 +153,11 @@ int main(void) //Main is a function, where all are executable code will be store
 
 	int *pAge = &age;
 
-	printf("Pointer variable: %p\n", pAge);
+	printf("Pointer variable: %p\n", pAge);// prints address
 	printf("Mem Address: %p\n", &age);
 	printf("Mem Address: %p\n", &age);
 	//Derefencing a pointer: grabs the value stored at that memory address
-	printf("Int age value: %d\n", *pAge); // Asterik deferences the pointer 
+	printf("Int age value: %d\n", *pAge); // Asterik deferences the pointer/prints value
 
 	//Editing files in C
 	/*FILE: Initiation, like a data type
@@ -200,7 +200,7 @@ int main(void) //Main is a function, where all are executable code will be store
 
 	shortened shor = 3; // shortened can be used to initialize a short variable
 
-	printf("%d", shor);
+	printf("%d\n", shor);
 
 	//conditional operator: exp1 ? exp2 : exp
 	/*If exp1 evaluates to true (that is, nonzero), the entire expression evaluates to the value of exp2.
@@ -225,6 +225,23 @@ sizeof + (unary) - (unary)
 	14 = += -= *= /= %= &= ^= |= <<= >>=
 	15 ,
 */
+
+	/*POINTERS */
+	int rate = 100;
+
+	int *p_rate = &rate; //asterik defines a pointer variable, ampersand is the address-of operator
+	printf("%d\n", rate); //variable value(direct)
+	printf("%d\n", *p_rate); //address value(indirection)
+
+	printf("%d\n", p_rate);//pointer variable
+	printf("%d\n", &rate);//ampersand operator
+
+	/*Arrays store their elements in one big chunk of memory, with the the first elements address the address of the whole array. Subsequent elements are stored on higher addresses*/
+
+	double mArr[5], *mpArr;
+	mpArr = mArr;
+
+
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
 	
 }
