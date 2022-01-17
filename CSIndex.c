@@ -241,7 +241,6 @@ sizeof + (unary) - (unary)
 	double mArr[5], *mpArr;
 	mpArr = mArr;
 
-
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
 	
 }
