@@ -114,7 +114,7 @@ int main(void) //Main is a function, where all are executable code will be store
 	 		|  0,1	|  1,1	|
 
 	 *********************************************/
-	int multiDimensionalArray[][4] = {
+	int multiDimensionalArray[][3] = {
 		{1,2,3},
 		{4,5,6}
 	};
@@ -230,21 +230,71 @@ sizeof + (unary) - (unary)
 	int rate = 100;
 
 	int *p_rate = &rate; //asterik defines a pointer variable, ampersand is the address-of operator
-	printf("%d\n", rate); //variable value(direct)
-	printf("%d\n", *p_rate); //address value(indirection)
+	printf("%d\n", rate); //variable value/100(direct)
+	printf("%d\n", *p_rate); //address value/100(indirection)
 
-	printf("%d\n", p_rate);//pointer variable
-	printf("%d\n", &rate);//ampersand operator
+	printf("%d\n", p_rate);//pointer variable/address
+	printf("%d\n", &rate);//ampersand operator/address
 
-	/*Arrays store their elements in one big chunk of memory, with the the first elements address the address of the whole array. Subsequent elements are stored on higher addresses*/
+	/*Arrays store their elements in one big chunk of memory, with the the first elements address 
+	the address of the whole array(this is true for every variable).
+	Subsequent elements are stored on higher addresses*/
 
 	double mArr[5], *mpArr;
-	mpArr = mArr;
+	mpArr = mArr; //
+	//array name without brackets is a pointer to the array's first element
+	//(data == &data[0])
 
+	/*Pointers can be modified and changed to point to another variables address
+	Pointers to different elements: Example
+	 x == 1000 
+	 &x[0] == 1000
+	 &x[1] = 1002 
+	 expenses == 1250 
+	 &expenses[0] == 1250 
+	 &expenses[1] == 1254
+	 Following elements of array x are stored in the next avaliable address
+	 */
+	for (int i = 0; i < sizeof(multiDimensionalArray)/4; i++) {
+		printf("%d\n", &multiDimensionalArray[0][i]);
+	};
+	/*Pointer artihmitic can be used to increment or decrement pointers to the next 
+	memory address, C already knows the data type of the pointer you are incrementing
+	so (float_array++) will add 4 to go to the next address. In this context, 1 is
+	equal to the byte size of the data type (e.g float _array+= 4; is will add 16). 
+	Decrementing is the same process.
+	Differencing is the act of substracting pointers to find out how far apart they are from each other (ptr1 - ptr2).
+	You can also compare pointers to each other using the logical operators
+	
+	Assignment: Assign a value to a pointer using  & or a pointer constant(array)
+	Indriection: Give the value stored in the the location that is being pointed to
+	Address of: & (more on day 15)
+	
+	*(array) == array[0]
+	*(array + n) == array[n]*/ 
+
+	//Passing arrays to functions
+	/*arguments have to be a single value. Pointers are a single value that can be 
+	used pass arrays to functions by pointing to the address holding the array*/
+	int largest(int num_arr[], int length);
+	printf("Largest value = %d",largest(anArray, 5));
+	
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
 	
-}
+};
 
+	int largest(int num_arr[], int length) 
+	{
+		int ctr, biggest = -1;
+		for (ctr = 0; ctr < length; ctr++){
+			printf("%d\n",num_arr[ctr]);
+			if (num_arr[ctr] > biggest) {
+				biggest = num_arr[ctr];
+				};
+		};
+		return biggest;
+	};
+	
 	
 
 
