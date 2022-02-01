@@ -124,9 +124,11 @@ int main(void) //Main is a function, where all are executable code will be store
 
 	int anArray[]= { 3, 6, 9, 12, 15 };
 	printf("Size:%d\n", sizeof(anArray)/4);
-	/*?? it seems sizeof() returns the amount of bytes the argument has: for example 5 integers are equivalent to 20 bytes (5*4) and dividing that by 4 (or the size of long)
+	/*?? it seems sizeof() returns the amount of bytes the argument has: 
+	for example 5 integers are equivalent to 20 bytes (5*4) and dividing that by 4 (or the size of long)
 	Will return the amount of elements in the array. 
-	Shorts are equal to 2 bytes, ints are 4(long), doubles(long long) are 8. chars are always 1 byte long, you dont have to divide a string to get the amount of characters in it.*/  
+	Shorts are equal to 2 bytes, ints are 4(long), doubles(long long) are 8. chars are always 1 byte long, 
+	you dont have to divide a string to get the amount of characters in it.*/  
 
 
 	//Strings are arrays of characters
@@ -277,10 +279,138 @@ sizeof + (unary) - (unary)
 	/*arguments have to be a single value. Pointers are a single value that can be 
 	used pass arrays to functions by pointing to the address holding the array*/
 	int largest(int num_arr[], int length);
-	printf("Largest value = %d",largest(anArray, 5));
+	printf("Largest value = %d\n",largest(anArray, 5));
+	
+
+	//STRING WITHOUT ARRAYS
+	char *message = "Hello Commander"; /*Same thing as 
+	message[]*/
+
+	//malloc() function
+	/*The malloc functions enables the programmer to allocate 
+	memory on-the-fly. You pass a number of bytes needed and 
+	it returns the address of the first byte. The address belongs
+	to the allocated space the size of the input*/
+	puts(message);
+	
+	char *ptr;
+
+	ptr = malloc(1);
+
+	*ptr = "x";
+
+	free(ptr);
+
+
+	//STRUCTURES 
+	/*structures are a collections of variables under a name.
+	These variables can be of different data types, and can
+	even hold arrays and other structures. These variables are
+	called variables of the structure.*/
+	//simple structure
+
+	struct coord 
+	{
+		int x;
+		int y;
+	} first, second;//declaration of struct coord
+	//first and seconds are now instances of coord; they contain
+	//both variables x and y 
+	struct coord third, fourth; //declaration of struct coord
+
+	//accessing members(properties) of a structure
+	first.x = 50;
+	second.x = 100;
+	first.y = 25;
+	//making one structure equal another of the same type copies all the information of the members between them
+	first = third;
+	/*Structures are merely templates, blueprints for when 
+	they are actually declared. Structures can be declared with
+	any name. The name know has all the information from the 
+	template*/
+	//array of structures
+	struct entry //struct with 3 arrays of type char
+	{
+		char *fname; //pointers allow for direct modification with strings
+		char *lname;
+		char *phone;
+		int *age; 
+	}entry2;
+	
+	entry2.fname = "John";
+
+	struct entry list[10]= {
+		"John", "Doe", "123-456-7890"//first element of list
+	};
+	//creates array of stuctures
+	//each element in list is a stucture of entry
+
+	printf("Phone Number: %s\n", list->phone);
+	printf("First name; %s\n", entry2.fname);
+
+	//pointers to structures
+	struct part {
+		short number;
+		char name[10];
+	} data[100];
+	struct part *p_part; //pointer of size "struct part"
+	struct part gizmo; //declaration of struct part named gizmo
+	p_part = &gizmo;//p_part pointing to gizmo
+
+	gizmo.number = 100; //(stucture name)OR
+	(*p_part).number = 100; //(indirection)OR
+	p_part->number= 100; //(indirect membership)-> is only used with pointers
+
+	//pointers and arrays of structures
+	struct part *a_part;
+	a_part = data; // or &data[0]
+
+	/*To iterate through all the instances of the structures
+	in data, we would have to increase the number of the pointer*/
+	for (int i = 0; i < 100; i++) {
+		printf("In data[%d], %s and %d are values", i,a_part->name, a_part->number);
+		a_part++;
+	};
+
+	//structures as arguments
+	/*Create a structure and declare it
+	struct tagS {
+		void member;
+	}declaration;
+
+	 *Create a function with "struct {tag} {name}" as argument
+	void structFunct(struct tagS arg);
+
+	 *pass the declared structure through the function
+	structFunct(declaration); */
+
+
+	//UNIONS
+	/*unions are similar to structures in the sense that
+	 they both store mutliple data types into one varaible,
+	 the difference is that declaration of unions can only use one member at a time.
+	 This is because the members in a union
+	 occupy the same area of memory, laid on top of each
+	 other*/
+	union shared
+	{
+		char *c;
+		char *i;
+	};//only the first member can be initialized 
+	
+	union shared one;
+
+	one.c = "Only this variable should be used until\n";
+	one.i = "Other variables are declared\n"; 
+	//declaring i removes the value of c in the union
+	// Using a variable other from the one that is declared
+	// can cause unexpected problems
+	//size of a union is equal to its largest member
+
+	//structs/unions and typedef
 	
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
-	
+
 };
 
 	int largest(int num_arr[], int length) 
