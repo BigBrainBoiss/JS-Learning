@@ -34,7 +34,7 @@ int choice( int n1, int n2, int n3) {
 }
 
 //Switch statments compare one value to a bunch of values
-
+//The expression in a switch statement can evaluate to a long, int, or char value.
 char grade(char grade) {
 	switch (grade)
 	{
@@ -406,8 +406,129 @@ sizeof + (unary) - (unary)
 	// Using a variable other from the one that is declared
 	// can cause unexpected problems
 	//size of a union is equal to its largest member
+	
+	//VARIABLE SCOPE
+	/*Variable scope refers the to the extent where a variable is
+	able to be accessed in code, in other words, where the 
+	variable is visible. Variable refers to all data types.
+	It also affects how long it persists in memory before 
+	it is deallocated*/
+	int scope = 129; //scope can only be accesed in int main
+	//where you define a variable is important
+	//static vs automatic 
+	/*automatic variables are destoryed after thery leave 
+	the scope they where declared in. local variables are 	automatic by default. Static varaibles are able to 
+	retain their values between function calls and therefore,
+	retained in memory. Though you cannot use extern to acess
+	the variable from another fiel.*/
+	static int scope2 = 5;//declaring a static variable in main{} is useless
+	extern int scope3;
+	
+	/*Give each variable an automatic local storage class to begin with.
+	• If the variable will be manipulated frequently, such as a loop counter, add the register keyword to its definition.
+	• In functions other than main(), make a variable static if its value must be retained between calls to the function.
+	• If a variable is used by most or all of the program’s functions, define it with the external storage class.*/
+	// every variable has scope: which is where it is visible and how long it persists in memory
+	
 
-	//structs/unions and typedef
+	//PROGRAM CONTROL
+	
+	//ending loops early
+	/*The break function can terminate loops early. This 
+	function can only be placed in a loop and can be put 
+	anywhere inside*/
+
+	while(scope2 >1) { //infinite loop
+		printf("Static variable scope2 is %d\n", scope2);
+		scope2++; //adds to scope2's value
+		if(scope2 == 10){ 
+			break; // once scope2 reaches a value of 10, the loop terminates
+		}
+	}// multiple breaks can be used but the first one executed takes effect 
+
+	//continue function
+	/*The continue function skips the current iteration 
+	its currently on and starts the next iteration of 
+	the loop*/
+
+	for(register int i = 0; i <= 15; i++){
+		if(i % 2 == 0){
+			continue;
+		} else {
+			printf("Odd numbers: %d\n", i);
+		}
+		
+	}
+
+	//goto function
+	/*Should be used sparingly. The goto function is a jump/
+	branching statements. When the program encounters the goto statment, the execution jumps to the location specified by the goto function. If encountered, it will 
+	always branch off. 
+	Format: goto location;
+	The goto statment can jump ahead or before the code, but 
+	it has to be in the same function*/
+
+	//exit() function
+	/*The exit() function terminates the program and returns the passed argument to indicate success or failure. 
+	It isused for error handling. Must include stdlib.h**/
+	//The exit function should return 0(success) or 1(error)
+	EXIT_FAILURE; //1
+	EXIT_SUCCESS; //2
+	//these typedefs can be passed to the exit()fucntion
+
+
+	//EXECUTING OS COMMANDS IN A PROGRAM
+	//Syntax: system(command);
+	/*THe system() function lets you execute commands of 
+	the operating system in your program. (i.e reading a
+	disks directory). Must include stdlib.h*/
+
+
+	//Streams in C
+	/*Streams are sequences of bytes flowing in and out of
+	the program to external sources.These streams are
+	connected to input and output devices. There are streams 
+	for the keyboard display (stdin, stdout, stderr etc.) 
+	These are standard streams of C and requires no action 
+	of the programmer.printf() uses the standard stream 
+	stdout to print the code in the terminal. There are two 
+	types of stream functions. One that uses the standard 
+	stream (printf) and one that needs the user to specify 
+	the stream (fprintf)/ Fprintf might be directed to a 
+	text file.
+	 */
+	//Hierachy: Charcter input, line input, formatted input
+
+	//getc() and fgetc()
+	/*Both of these functions dont automatically use the 
+	stdin stream. They are used to read characters from 
+	disk files.
+	*/
+
+
+	//ungetc()
+	/*Ungetting a character from the input stream. Basically 
+	removing a character from the stream and returning it to
+	its input device. The removed character is now the first 
+	character read by the next input operation.You can only unget one charcter and it cant be EOF (ending character).Prototype: int ungetc(int ch, FILE *fp)*/
+
+
+	//line input functions
+	//gets()
+	/*Puts all the characters from the input into a string.
+	Takes a pointer to type char as argument and returns
+	pointer. Must allocate memory to store the string.*/
+	//fgets is like gets but allows to specify input stream
+	//formatted input functions
+
+	//scanf()
+	/**/
+
+	//fflush()
+	/*fflush() gets rid or flushes the information of a stream. You can
+	flush extra characters leftover in stdin by calling fflush(stdin)*/
+
+
 	
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
 
