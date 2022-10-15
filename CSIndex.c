@@ -527,7 +527,10 @@ sizeof + (unary) - (unary)
 	//fflush()
 	/*fflush() gets rid or flushes the information of a stream. You can
 	flush extra characters leftover in stdin by calling fflush(stdin)*/
-
+	    for (size_t i = 0; i <= 3-2; i++)
+    {
+        printf("%d \n", i);
+    }
 
 	
 	return 0; //Returns 0 to the main function, return lets the system know when the process has succeeded or not
