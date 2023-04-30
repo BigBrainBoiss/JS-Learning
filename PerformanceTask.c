@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-//Definition of structure containing strings for the password names and the passwords themselves.
+//Definition of structure containing 50 character strings to store password names and the passwords themselves.
 //Sturctures are used to group variables into one block of memory/variable.
 struct Password
 {
     char passName[50];
     char pass[50];
 };
-/*Definition of a list "new" with 20 instances of structure "Password" inside.  Each index of new stores the password and its name for easy retrival and iteration.*/
+/*Definition of a list "new" with 20 instances of structure "Password" inside.  Each index of "new" stores the password and password name for easy retrival and iteration.*/
 struct Password new[20];
 
 //"listPassNames()" iterates through a file containing all passwords and password names, puts them into the "new" array and prints them out and numbers them.
@@ -43,6 +43,7 @@ int main() {
         }
         printf("File Created. \n");
     /* ***************************************************************************************************************************** */
+
     /*If "Pass.txt" exists, program will first check if there is anything inside the file, informing the user that there is no data 
     inside the file if there is none. If there is data inside the file, the program will list the password names and number them 
     through listPassNames()*/
@@ -61,15 +62,18 @@ int main() {
         }
     }
     /* *************************************************************************************************************************** */
+
     /*Once the program informs the user of the status of "Pass.txt",*/
-    //Keeps the program going as long as 'startLetter' isnt equal to the character 'E'
-    while(startLetter[0] != 'E') {
+    //Keeps the program going as long as 'startLetter' isnt equal to the character 'E' or 'e'
+    while(startLetter[0] != 'E' || startLetter[0] != 'e') {
         //Prompt the user to press either A, R or E
         printf("[A]dd password or [R]ead password or [E]xit? \n");
         //Retrives one character
         scanf("%s", &startLetter);
         if (*startLetter == 'A' || *startLetter == 'a') {
             //If user inputs 'A', open the file for appending text and run addPass to allow the user to insert a new password.
+            /*The reason we close the file and reopen it again is because the first character of the file is being used by the program at line 53. 
+            This frees up that memory address and is able to be accessed by the program again.*/
             fclose(fp);
             fp = fopen("Pass.txt","a");
             addPass(); 
@@ -81,7 +85,7 @@ int main() {
             readPass(passNum);
         }
     }
-    /**/
+    /* ************************************************************************************************************************** */
     //Close the file and end the program.
     fclose(fp);
     return 0;
@@ -144,4 +148,4 @@ void readPass(int n) {
     //Prints the password at new(n-1).
     //The reason for n-1 is because the program numbers the password names starting by one, while new starts at 0.
     printf("Password for: %s \n %s\n",new[n-1].passName,new[n-1].pass);
-}
+            //If user inputs 'A', open the file for appending text and run addPass to allow the user to insert a new password.
